@@ -46,7 +46,7 @@ A production-ready medical chatbot fine-tuned on **111,000+ real doctor-patient 
 4. **🔧 Modern Dependencies**: Updated to latest transformers, peft, bitsandbytes
 5. **📊 Comprehensive Evaluation**: Added BERTScore as per paper methodology
 6. **🧪 Unit Tests**: Test coverage for config and data utilities
-7. **📝 Better Documentation**: Detailed README with usage examples
+7. **📝 Better Documentation**
 
 ---
 
@@ -152,9 +152,7 @@ python -m chatdoctor.evaluation.evaluate_bertscore \
 
 | Model | BERTScore P | BERTScore R | BERTScore F1 | BLEU-1 | ROUGE-L |
 |-------|-------------|-------------|--------------|--------|---------|
-| LLaMA-2 Base | 0.826 | 0.828 | 0.827 | 0.125 | 0.103 |
 | LLaMA-2 + LoRA | 0.826 | 0.828 | 0.827 | 0.137 | 0.102 |
-| Mistral Base | - | - | - | 0.141 | 0.115 |
 | **Mistral + LoRA** | **0.845** | **0.843** | **0.844** | **0.150** | 0.109 |
 
 ---
