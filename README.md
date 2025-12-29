@@ -200,13 +200,77 @@ chatdoctor_v2/
 
 ---
 
+## 📦 Installation
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/Elefantessa/ChatDoctor.git
+cd ChatDoctor
+pip install -e .
+```
+
+### 2. Download Base Models
+
+Choose one of the following base models:
+
+**Mistral-7B (Recommended):**
+```bash
+# Option A: Using huggingface-cli
+pip install huggingface-hub
+huggingface-cli download mistralai/Mistral-7B-Instruct-v0.3 --local-dir ./models/mistral
+
+# Option B: Using Python
+python -c "
+from huggingface_hub import snapshot_download
+snapshot_download('mistralai/Mistral-7B-Instruct-v0.3', local_dir='./models/mistral')
+"
+```
+
+**LLaMA-3 8B:**
+```bash
+huggingface-cli download NousResearch/Meta-Llama-3-8B-Instruct --local-dir ./models/llama3-8b
+```
+
+### 3. Download LoRA Adapters
+
+The fine-tuned LoRA adapters are hosted on HuggingFace:
+
+```bash
+# Mistral LoRA (161MB) - BERTScore F1 = 0.844
+huggingface-cli download Elefantessa/chatdoctor-mistral-lora --local-dir ./models/mistral_lora
+
+# Or download manually from:
+# https://huggingface.co/Elefantessa/chatdoctor-mistral-lora
+```
+
+### 4. Download Training Data (Optional)
+
+```bash
+# HealthCareMagic-100k (Training)
+python -c "
+from datasets import load_dataset
+ds = load_dataset('lavita/ChatDoctor-HealthCareMagic-100k')
+import json
+with open('./data/HealthCareMagic-100k.json', 'w') as f:
+    json.dump([dict(x) for x in ds['train']], f)
+"
+
+# iCliniq (Evaluation)
+python -c "
+from datasets import load_dataset
+ds = load_dataset('lavita/ChatDoctor-iCliniq')
+import json
+with open('./data/icliniq.json', 'w') as f:
+    json.dump([dict(x) for x in ds['train']], f)
+"
+```
+
+---
+
 ## 🚀 Quick Start
 
 ```bash
-# Clone and setup
-cd chatdoctor_v2
-pip install -e .
-
 # Chat with the best model (Mistral + LoRA)
 ./scripts/chat.sh --mistral
 
