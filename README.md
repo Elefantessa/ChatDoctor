@@ -249,10 +249,10 @@ The fine-tuned LoRA adapters are hosted on HuggingFace:
 
 ```bash
 # Mistral LoRA (161MB) - BERTScore F1 = 0.844
-huggingface-cli download Elefantessa/chatdoctor-mistral-lora --local-dir ./models/mistral_lora
+huggingface-cli download halame/chatdoctor-mistral-lora --local-dir ./models/mistral_lora
 
 # Or download manually from:
-# https://huggingface.co/Elefantessa/chatdoctor-mistral-lora
+# https://huggingface.co/halame/chatdoctor-mistral-lora
 ```
 
 ### 4. Download Training Data (Optional)
