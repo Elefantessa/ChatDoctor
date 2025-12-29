@@ -1,0 +1,90 @@
+# ChatDoctor Configuration
+# Copy this file and customize for your environment
+
+# Model Settings
+model:
+  # Base model path (local path or HuggingFace model ID)
+  base_model: "./models/llama-base"
+  # LoRA adapter path (if using fine-tuned model)
+  lora_adapter: "./models/lora_weights"
+  # Model dtype: float16, bfloat16, float32
+  torch_dtype: "float16"
+  # Device map: auto, cuda, cpu, or specific device
+  device_map: "auto"
+  # Load in 4-bit quantization
+  load_in_4bit: true
+  # Load in 8-bit quantization (ignored if load_in_4bit is true)
+  load_in_8bit: false
+
+# Training Settings
+training:
+  # Output directory for checkpoints
+  output_dir: "./models/lora_weights"
+  # Training data path
+  data_path: "./data/HealthCareMagic-100k.json"
+  # Batch size (effective batch size = batch_size * gradient_accumulation_steps)
+  batch_size: 128
+  micro_batch_size: 4
+  gradient_accumulation_steps: 8
+  # Training epochs
+  num_epochs: 1
+  # Learning rate
+  learning_rate: 3.0e-4
+  # Max sequence length
+  cutoff_len: 512
+  # Validation set size
+  val_set_size: 500
+  # LoRA parameters
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  lora_target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+  # Use gradient checkpointing to save memory
+  gradient_checkpointing: true
+  # Use Flash Attention 2
+  use_flash_attention: true
+
+# Inference Settings
+inference:
+  # Max new tokens to generate
+  max_new_tokens: 256
+  # Generation parameters
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 50
+  repetition_penalty: 1.1
+  do_sample: true
+
+# RAG Settings (Autonomous mode)
+rag:
+  # Enable RAG mode: none, csv, wiki
+  mode: "none"
+  # CSV database path
+  csv_path: "./data/healthcare_disease_dataset.csv"
+  # Number of context chunks to use
+  num_chunks: 4
+  # Chunk size in words
+  chunk_size: 250
+
+# Logging Settings
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR
+  level: "INFO"
+  # Log to file
+  log_file: null
+  # Use rich console output
+  rich_console: true
+
+# WandB Settings (optional)
+wandb:
+  project: "chatdoctor"
+  run_name: null
+  watch: false
+  log_model: false
