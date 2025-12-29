@@ -227,10 +227,21 @@ snapshot_download('mistralai/Mistral-7B-Instruct-v0.3', local_dir='./models/mist
 "
 ```
 
-**LLaMA-3 8B:**
+**LLaMA-3 8B (Open Version):**
 ```bash
 huggingface-cli download NousResearch/Meta-Llama-3-8B-Instruct --local-dir ./models/llama3-8b
 ```
+
+**LLaMA-3.1 8B (Official - Requires Auth):**
+```bash
+# First, login to HuggingFace (requires accepting Meta's license)
+huggingface-cli login
+
+# Then download
+huggingface-cli download meta-llama/Llama-3.1-8B-Instruct --local-dir ./models/llama3.1-8b
+```
+
+> ⚠️ **Note:** LLaMA 3.1 requires accepting Meta's license at [HuggingFace](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct)
 
 ### 3. Download LoRA Adapters
 
