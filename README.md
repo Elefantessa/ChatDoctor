@@ -5,8 +5,16 @@
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://python.org)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![HuggingFace](https://img.shields.io/badge/🤗%20HuggingFace-Models-yellow.svg)](https://huggingface.co/halame)
 
-A production-ready medical chatbot fine-tuned on **111,000+ real doctor-patient conversations**, achieving **BERTScore F1 = 0.844** — matching the original ChatDoctor paper results.
+A production-ready medical chatbot fine-tuned on **111,000+ real doctor-patient conversations**, achieving **BERTScore F1 = 0.845** — exceeding the original ChatDoctor paper results.
+
+### 🤗 Pre-trained Models on HuggingFace
+
+| Model | F1 Score | Link |
+|-------|----------|------|
+| **LLaMA-3 + LoRA** 🏆 | 0.845 | [halame/chatdoctor-llama3-lora](https://huggingface.co/halame/chatdoctor-llama3-lora) |
+| Mistral + LoRA | 0.844 | [halame/chatdoctor-mistral-lora](https://huggingface.co/halame/chatdoctor-mistral-lora) |
 
 ---
 
