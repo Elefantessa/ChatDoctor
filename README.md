@@ -18,9 +18,10 @@ A production-ready medical chatbot fine-tuned on **111,000+ real doctor-patient 
 |-------|-----------|--------|----------|--------|
 | ChatGPT | 0.837 | 0.845 | 0.841 | Paper |
 | ChatDoctor (Paper) | 0.844 | 0.845 | 0.841 | Paper |
-| **ChatDoctor v2 (Ours)** | **0.845** | **0.843** | **0.844** | This Project |
+| Mistral + LoRA | 0.845 | 0.843 | 0.844 | This Project |
+| **LLaMA-3 + LoRA** | **0.844** | **0.846** | **0.845** 🏆 | This Project |
 
-✅ **Our implementation matches/exceeds the original paper performance!**
+✅ **LLaMA-3 + LoRA achieves the best BERTScore F1 = 0.845!**
 
 ---
 
@@ -153,7 +154,8 @@ python -m chatdoctor.evaluation.evaluate_bertscore \
 | Model | BERTScore P | BERTScore R | BERTScore F1 | BLEU-1 | ROUGE-L |
 |-------|-------------|-------------|--------------|--------|---------|
 | LLaMA-2 + LoRA | 0.826 | 0.828 | 0.827 | 0.137 | 0.102 |
-| **Mistral + LoRA** | **0.845** | **0.843** | **0.844** | **0.150** | 0.109 |
+| Mistral + LoRA | 0.845 | 0.843 | 0.844 | 0.150 | 0.109 |
+| **LLaMA-3 + LoRA** | **0.844** | **0.846** | **0.845** 🏆 | - | - |
 
 ---
 
@@ -246,11 +248,11 @@ huggingface-cli download meta-llama/Llama-3.1-8B-Instruct --local-dir ./models/l
 The fine-tuned LoRA adapters are hosted on HuggingFace:
 
 ```bash
+# LLaMA-3 LoRA (168MB) - BERTScore F1 = 0.845 🏆 (BEST)
+huggingface-cli download halame/chatdoctor-llama3-lora --local-dir ./models/llama3_lora
+
 # Mistral LoRA (161MB) - BERTScore F1 = 0.844
 huggingface-cli download halame/chatdoctor-mistral-lora --local-dir ./models/mistral_lora
-
-# Or download manually from:
-# https://huggingface.co/halame/chatdoctor-mistral-lora
 ```
 
 ### 4. Download Training Data (Optional)
